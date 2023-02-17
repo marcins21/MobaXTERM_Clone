@@ -24,7 +24,6 @@ def add_user_to_database(user:User) -> bool:
     user_login = user.get_user_login()
     user_password = user.get_user_password()
     user_role = user.get_user_role()
-
     users = get_all_users_logins_from_database()
     if user_login in users:
         print(f"User Already in Database FAILED")

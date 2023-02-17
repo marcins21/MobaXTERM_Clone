@@ -51,7 +51,7 @@ def delete_server_from_database(server:Server) -> bool:
     return True
 
 
-def edit_server_in_database(server:Server,new_server_name="",new_ip="",new_user="",new_password=""):
+def edit_server_in_database(server:Server,new_server_name="",new_ip="",new_user="",new_password="") -> bool:
     server_name = server.get_server_name()
     server_name_before_change = server.get_server_name()
     ip = server.get_server_ip()
@@ -79,6 +79,7 @@ def edit_server_in_database(server:Server,new_server_name="",new_ip="",new_user=
         cursor.execute("UPDATE servers SET server_name=:new_server_name,ip=:new_ip,user=:new_user,password=:new_password WHERE server_name=:server_name"
                        ,{'new_server_name':server_name,'new_ip':ip,'new_user':user,'new_password':password,'server_name':server_name_before_change})
         conn.commit()
+        return True
 
     else:
         print(f"Server {server.get_server_name()} is not in Database FAILED")
