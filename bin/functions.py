@@ -1,8 +1,7 @@
 import sqlite3
 from server import Server
-from time import sleep
 
-conn = sqlite3.connect('test.db')
+conn = sqlite3.connect('servers_database.db')
 cursor = conn.cursor()
 table_query = """CREATE TABLE IF NOT EXISTS servers(
                 server_name text,
@@ -53,7 +52,6 @@ def delete_server_from_database(server:Server) -> bool:
 
 
 def edit_server_in_database(server:Server,new_server_name="",new_ip="",new_user="",new_password=""):
-
     server_name = server.get_server_name()
     server_name_before_change = server.get_server_name()
     ip = server.get_server_ip()
