@@ -1,8 +1,8 @@
 import sqlite3
-from users import User
+from user import User
 
 
-conn = sqlite3.connect("users_database.db")
+conn = sqlite3.connect("servers_database.db")
 cursor = conn.cursor()
 table_query = """CREATE TABLE IF NOT EXISTS users(
                 user_login text,
