@@ -84,6 +84,24 @@ def edit_server_in_database(server:Server,new_server_name="",new_ip="",new_user=
         print(f"Server {server.get_server_name()} is not in Database FAILED")
         return False
 
+def validate_sever(server:Server) -> bool:
+    server_name = server.get_server_name()
+    servers = get_server_names_from_database()
+    if server_name in servers:
+        return True
+    else:
+        return False
+
+def show_server_info(server:Server,is_server_valid=False):
+    server_name = server.get_server_name()
+    if is_server_valid:
+        server_info  = cursor.execute("SELECT * FROM servers WHERE server_name=:server_name",
+                                      {'server_name':server_name}).fetchone()
+        print(f"Server: {server_name}")
+        for element in server_info:
+            print(f"- {element}")
+    else:
+        print(f"Server Name Is not Valid, Please Try Again! FAILED")
 
 
 
