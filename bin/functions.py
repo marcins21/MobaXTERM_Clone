@@ -80,7 +80,6 @@ def edit_server_in_database(server:Server,new_server_name="",new_ip="",new_user=
                        ,{'new_server_name':server_name,'new_ip':ip,'new_user':user,'new_password':password,'server_name':server_name_before_change})
         conn.commit()
         return True
-
     else:
         print(f"Server {server.get_server_name()} is not in Database FAILED")
         return False

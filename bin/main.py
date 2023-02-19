@@ -17,9 +17,9 @@ def main():
     # edit_server_in_database(server1,"Changed_training-04_1","10.1.1.90909","changed","pass")
 
     user1 = User("marcin","Pass","Simple user")
-    add_user_to_database(user1)
+    valid_user(user1)
+    #add_user_to_database(user1)
+    #delete_user_from_database(user1)
     #print(get_all_users_logins_from_database())
-
-
 
 main()

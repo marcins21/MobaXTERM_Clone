@@ -35,6 +35,34 @@ def add_user_to_database(user:User) -> bool:
     return True
 
 
+def delete_user_from_database(user:User) -> bool:
+    user_login = user.get_user_login()
+    user_password = user.get_user_password()
+    user_role = user.get_user_role()
+    users = get_all_users_logins_from_database()
+    if not user_login in users:
+        print(f"Cannot delete user, Not in Database FAILED")
+        return False
+
+    cursor.execute("DELETE FROM users WHERE user_login=:user_login ", {'user_login': user_login})
+    conn.commit()
+
+def valid_user(user:User) -> bool:
+    user_login = user.get_user_login()
+    user_password = user.get_user_password()
+    users = get_all_users_logins_from_database()
+    if not user_login in users:
+        print(f"login Failed user {user_login} not in database")
+        return False
+
+    passw = cursor.execute("SELECT user_password FROM users WHERE user_login=:user_login",{'user_login':user_login}).fetchone()
+    if passw[0] == user_password:
+        print(f"User '{user_login}' logged SUCCESFULLY")
+    else:
+        print(f"Wrong password for user {user_login}")
+
+
+
 
 
 
