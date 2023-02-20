@@ -58,8 +58,10 @@ def valid_user(user:User) -> bool:
     passw = cursor.execute("SELECT user_password FROM users WHERE user_login=:user_login",{'user_login':user_login}).fetchone()
     if passw[0] == user_password:
         print(f"User '{user_login}' logged SUCCESFULLY")
+        return True
     else:
         print(f"Wrong password for user {user_login}")
+        return False
 
 
 
