@@ -5,10 +5,6 @@ from auth import add_user_to_database,delete_user_from_database,valid_user
 from user import User
 import tkinter.messagebox as tkmb
 
-
-
-
-
 ctk.set_appearance_mode("dark")  # Modes: "System" (standard), "Dark", "Light"
 ctk.set_default_color_theme("dark-blue")  # Themes: "blue" (standard), "green", "dark-blue"
 

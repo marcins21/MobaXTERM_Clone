@@ -1,15 +1,9 @@
 from server_functions import *
 from auth import *
-from front_menu import *
 from user import User
 from server import Server
 
 def main():
-    # TODO
-    # 1) interactive menu
-    # 2) User Authentication -- Database
-    # 3) Special Authenthiaction for password change
-    # 4) Add Connect Feature that allows users to connect to specific server
 
     server1 = Server(f"gni-training-01","10.1.1.118","sadmin","softel13")
     #show_server_info(server1,validate_sever(server1))
