@@ -50,18 +50,36 @@ def delete_user_from_database(user:User) -> bool:
 def valid_user(user:User) -> bool:
     user_login = user.get_user_login()
     user_password = user.get_user_password()
+    user_role = user.get_user_role()
     users = get_all_users_logins_from_database()
     if not user_login in users:
         print(f"login Failed user {user_login} not in database")
         return False
 
     passw = cursor.execute("SELECT user_password FROM users WHERE user_login=:user_login",{'user_login':user_login}).fetchone()
+    role = cursor.execute("SELECT user_role FROM users WHERE user_login=:user_login",{'user_login':user_login}).fetchone()
     if passw[0] == user_password:
         print(f"User '{user_login}' logged SUCCESFULLY")
-        return True
+        #Checking User Role
+        print(role[0])
+        if role[0] == user_role:
+            return True
+        else:
+            print(f"Wrong user Role Selected FAILED")
+            return False
     else:
         print(f"Wrong password for user {user_login}")
         return False
+
+def check_admin(user:User) -> bool:
+    user_role = user.get_user_role()
+    if user_role == "Administrator":
+        return True
+    else:
+        return False
+
+
+
 
 
 
