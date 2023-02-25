@@ -5,6 +5,8 @@ from server import Server
 
 def main():
 
+
+
     server1 = Server(f"gni-training-01","10.1.1.118","sadmin","softel13")
     #show_server_info(server1,validate_sever(server1))
     # add_server_to_database(server1)
