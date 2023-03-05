@@ -6,6 +6,7 @@ from user import User
 from auth import add_user_to_database,delete_user_from_database,valid_user,get_all_users_logins_from_database,check_admin
 import tkinter.messagebox as tkmb
 
+#Default Settings
 ctk.set_appearance_mode("dark")  # Modes: "System" (standard), "Dark", "Light"
 ctk.set_default_color_theme("dark-blue")  # Themes: "blue" (standard), "green", "dark-blue"
 
@@ -15,6 +16,7 @@ app.title("Login")
 
 login_label = tkinter.StringVar()
 
+#printing users from database on Screen
 def print_users_in_database(new_window,button):
     # Printing all usernames
     T = tkinter.Text(new_window, height=10, width=50)
@@ -26,6 +28,7 @@ def print_users_in_database(new_window,button):
     T.insert(tkinter.END, text)
     button.configure(state="disabled",fg_color="grey")
 
+#Register new user
 def register_form_user():
     def register_user():
         register_login_form = register_login.get()
@@ -62,6 +65,8 @@ def register_form_user():
     register_button_form = ctk.CTkButton(master=register_frame,text="Sumbit",command=register_user)
     register_button_form.pack(padx=10,pady=10)
 
+    
+#login user
 def login_user():
     #Information Given by user
     user_form_login=user_login.get()
@@ -85,15 +90,15 @@ def login_user():
         label.configure(text="Login Successfull",text_color="green",font=("Sans Serif",17,"bold"))
     else:
         label.configure(text="Wrong Password or Username",text_color="red",font=("Sans Serif",17,"bold"))
-
-
     #Debug info---
-    print(f"login '{user_form_login}' :: password '{user_form_password}' :: role '{user_form_role}'")
-   
+    #print(f"login '{user_form_login}' :: password '{user_form_password}' :: role '{user_form_role}'")
+
+#User position
 def combobox_callback(choice):
     user_combobox_choice = choice
     return user_combobox_choice
 
+#Main menu
 label = ctk.CTkLabel(app,text="Login Form")
 label.pack(padx=20,pady=20)
 
